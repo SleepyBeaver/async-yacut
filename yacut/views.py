@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, current_app
+from flask import Blueprint, render_template, redirect, url_for, current_app
 from . import db
 from .models import URLMap
 from .forms import URLForm, FileUploadForm
@@ -27,7 +27,11 @@ async def upload_file_to_disk(session, token, filename, file_data):
     if not upload_href:
         return None, filename
 
-    async with session.put(upload_href, data=file_data, headers=headers) as resp:
+    async with session.put(
+        upload_href,
+        data=file_data,
+        headers=headers
+    ) as resp:
         if resp.status not in (201, 202):
             return None, filename
 
