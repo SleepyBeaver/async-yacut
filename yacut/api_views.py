@@ -33,10 +33,8 @@ def create_short_link():
             ), 400
         if URLMap.query.filter_by(short=custom_id).first():
             return jsonify(
-                {
-                    'message': 'Предложенный вариант короткой ссылки '
-                            'уже существует.'
-                }
+                {'message': 'Предложенный вариант короткой ссылки '
+                            'уже существует.'}
             ), 400
         short_id = custom_id
     else:
