@@ -6,6 +6,7 @@ CHARSET = string.ascii_letters + string.digits
 MIN_LENGTH = 6
 MAX_LENGTH = 10
 
+
 def get_unique_short_id():
     while True:
         length = random.randint(MIN_LENGTH, MAX_LENGTH)

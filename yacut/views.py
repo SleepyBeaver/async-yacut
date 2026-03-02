@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, flash
+from flask import Blueprint, render_template, redirect, url_for
 from . import db
 from .models import URLMap
 from .forms import URLForm, FileUploadForm

@@ -27,11 +27,17 @@ def create_short_link():
 
     if custom_id:
         if len(custom_id) > 16 or not ALLOWED_CHARS_REGEX.match(custom_id):
-            return jsonify({'message': 'Указано недопустимое имя для короткой ссылки'}), 400
+            return jsonify(
+                {'message': 'Указано недопустимое имя для '
+                            'короткой ссылки'}
+            ), 400
         if URLMap.query.filter_by(short=custom_id).first():
-            return jsonify({
-                'message': 'Предложенный вариант короткой ссылки уже существует.'
-            }), 400
+            return jsonify(
+                {
+                    'message': 'Предложенный вариант короткой ссылки '
+                            'уже существует.'
+                }
+            ), 400
         short_id = custom_id
     else:
         short_id = get_unique_short_id()

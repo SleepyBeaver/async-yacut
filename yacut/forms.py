@@ -1,5 +1,4 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileAllowed, FileRequired
 from wtforms import StringField, MultipleFileField
 from wtforms.validators import DataRequired, Length, Optional, URL
 from wtforms import ValidationError
@@ -32,7 +31,8 @@ class URLForm(FlaskForm):
 
         if not ALLOWED_CHARS_REGEX.match(field.data):
             raise ValidationError(
-                'Короткая ссылка может содержать только латинские буквы и цифры.'
+                'Короткая ссылка может содержать только '
+                'латинские буквы и цифры.'
             )
 
         if URLMap.query.filter_by(short=field.data).first():
