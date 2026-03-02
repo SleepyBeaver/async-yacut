@@ -23,3 +23,6 @@ def create_app():
     app.register_blueprint(errors_bp)
 
     return app
+
+
+app = create_app()
